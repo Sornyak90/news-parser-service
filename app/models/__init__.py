@@ -1,7 +1,9 @@
 from sqlalchemy.orm import declarative_base
 
-from .source import Source
+Base = declarative_base()
+
 from .article import Article
 from .feed import Feed
+from .source import Source
 
-Base = declarative_base()
+__all__ = ["Article", "Base", "Feed", "Source"]

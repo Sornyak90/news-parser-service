@@ -1,12 +1,14 @@
 from datetime import datetime
-from sqlalchemy import String, Integer, DateTime, Text, ForeignKey, func, Index
+
+from sqlalchemy import DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
+
 from app.models import Base
 
 
 class Feed(Base):
     __tablename__ = "feed"
-    
+
     id: Mapped[int] = mapped_column(primary_key=True)
     article_id: Mapped[int] = mapped_column(ForeignKey("articles.id"), index=True)
     telegram_message_id: Mapped[int] = mapped_column(Integer, nullable=True)

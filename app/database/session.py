@@ -45,4 +45,3 @@ def get_engine():
     if _engine is None:
         raise RuntimeError("Database not initialized. Call init_db() first.")
     return _engine
-
