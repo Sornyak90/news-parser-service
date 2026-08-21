@@ -1,7 +1,6 @@
-from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+from config import settings
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import AsyncAdaptedQueuePool
-
-from app.config import settings
 
 _engine = None
 _session_maker = None
@@ -33,7 +32,7 @@ def init_db(engine=None):
     return _engine, _session_maker
 
 
-def get_session():
+def get_session() -> AsyncSession:
     """Получение сессии."""
     if _session_maker is None:
         raise RuntimeError("Database not initialized. Call init_db() first.")
